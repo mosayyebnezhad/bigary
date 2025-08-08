@@ -14,7 +14,7 @@ A lightweight CLI tool for generating CRUD REST APIs based on Clean and Hexagona
 ##### mac/linux
 
 ```zsh
-brew install bigary
+brew install mosayyebnezhad/brew/bigary
 ```
 
 ##### windows
@@ -22,3 +22,6 @@ brew install bigary
 ```zsh
 comming soon ...
 ```
+---
+# Doc
+Readmore about [Clean](http) and Hexagonal Architecture
