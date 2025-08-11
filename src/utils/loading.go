@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func Loading(do string) {
+func ShovelMessage(do string) {
 	i := 0
 	for {
 		i++

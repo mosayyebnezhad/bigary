@@ -1,13 +1,11 @@
-package utils
+package arguments
 
 import (
 	"errors"
-	"os"
 	"strings"
 )
 
-func Arguments() (map[string]string, error) {
-	argument := os.Args
+func Arguments(argument []string) (map[string]string, error) {
 
 	arg := argument[2:]
 
@@ -32,7 +30,7 @@ func Arguments() (map[string]string, error) {
 			if value != "" {
 				splt := strings.Split(value, "=")
 				if len(splt) != 2 {
-					return nil, errors.New("does not contain `=`")
+					return nil, errors.New("argument syntax is not valid, 2th input most be One of them : key`=`value | --key value | -key value ")
 				}
 				arguments[splt[0]] = splt[1]
 				// fmt.Println(value)
@@ -42,4 +40,22 @@ func Arguments() (map[string]string, error) {
 	}
 
 	return arguments, nil
+}
+
+func Command(argument []string) (string, error) {
+	arg := argument[1]
+
+	if len(arg) < 1 {
+		return "", errors.New("command is most be at least 2 word")
+	}
+
+	if strings.HasPrefix(arg, "--") {
+		return strings.TrimPrefix(arg, "--"), nil
+	}
+
+	if strings.HasPrefix(arg, "-") {
+		return strings.TrimPrefix(arg, "-"), nil
+	}
+
+	return arg, nil
 }

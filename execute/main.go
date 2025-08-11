@@ -1,8 +1,10 @@
 package main
 
 import (
+	"bigary/src/command"
 	"bigary/src/utils"
 	"fmt"
+	"os"
 )
 
 func main() {
@@ -14,14 +16,25 @@ func main() {
 		location = l
 	}
 
-	var args map[string]string
-	if a, Err := utils.Arguments(); Err != nil {
-		fmt.Println("‼️ ", Err)
+	argument := os.Args
+
+	switch len(argument) {
+	case 1:
+		utils.Help()
 		return
-	} else {
-		args = a
+
+	case 2:
+		err := command.OneCommand(argument)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		return
+	default:
+		if err := command.Run(argument, location); err != nil {
+			fmt.Println(err)
+			return
+		}
+
 	}
-
-	fmt.Println(args["name"], location)
-
 }
