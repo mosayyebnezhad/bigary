@@ -23,5 +23,3 @@ brew install mosayyebnezhad/brew/bigary
 comming soon ...
 ```
 ---
-# Doc
-Readmore about [Clean](http) and Hexagonal Architecture
